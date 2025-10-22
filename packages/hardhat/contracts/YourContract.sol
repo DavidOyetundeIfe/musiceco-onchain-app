@@ -53,7 +53,7 @@ contract YourContract {
         totalCounter += 1;
         userGreetingCounter[msg.sender] += 1;
 
-      // msg.value: built-in global variable that represents the amount of ether sent with the transaction
+        // msg.value: built-in global variable that represents the amount of ether sent with the transaction
         if (msg.value > 0) {
             premium = true;
         } else {
@@ -67,7 +67,7 @@ contract YourContract {
     /**
      * Function that allows the owner to withdraw all the Ether in the contract
      * The function can only be called by the owner of the contract as defined by the isOwner modifier
- */
+    */
     function withdraw() public isOwner {
         (bool success, ) = owner.call{ value: address(this).balance }("");
         require(success, "Failed to send Ether");
